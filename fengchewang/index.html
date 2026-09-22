@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风车网-免费在线阅读漫画与动漫资源平台</title>
+    <meta name="description" content="风车网提供海量免费在线漫画阅读服务，涵盖日漫、韩漫、国漫等多种类型。收录最新热门连载与完结佳作，支持手机端流畅阅读，打造优质的二次元阅读体验。">
+    <meta name="keywords" content="风车网,免费漫画,在线阅读,动漫,日漫,韩漫,国漫">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #2c3e50;
+            --accent-color: #f1c40f;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f2f6;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .search-box button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags span {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin: 0 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero-tags span:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                display: none; /* Simplified for mobile */
+            }
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            color: var(--secondary-color);
+        }
+
+        .section-header a {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .section-header a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Comic Grid */
+        .comic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .comic-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .comic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-cover {
+            position: relative;
+            width: 100%;
+            padding-top: 140%; /* Aspect Ratio */
+            background-color: #eee;
+        }
+
+        .card-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f2f6;
+        }
+
+        .rank-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ddd;
+            width: 25px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { color: #ff4757; }
+        .rank-list li:nth-child(2) .rank-num { color: #ffa502; }
+        .rank-list li:nth-child(3) .rank-num { color: #2ed573; }
+
+        .rank-title {
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .rank-views {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .cat-item {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .cat-item:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .cat-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .cat-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+
+        /* Utility */
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                风车网
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">日漫</a>
+                <a href="#">韩漫</a>
+                <a href="#">国漫</a>
+                <a href="#">轻小说</a>
+                <a href="#">排行榜</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索漫画、作者...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>探索无限精彩的二次元世界</h1>
+            <p>风车网致力于为用户提供最流畅、最丰富的免费漫画阅读体验，每日更新海量正版授权作品。</p>
+            <div class="hero-tags">
+                <span>#热血战斗</span>
+                <span>#恋爱校园</span>
+                <span>#悬疑推理</span>
+                <span>#奇幻冒险</span>
+                <span>#治愈日常</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        
+        <!-- Left Column -->
+        <div class="content-area">
+            
+            <!-- Categories -->
+            <section class="categories">
+                <div class="section-header">
+                    <h2>热门分类</h2>
+                </div>
+                <div class="category-grid">
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">🔥</span>
+                        <span class="cat-name">热门推荐</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">⚔️</span>
+                        <span class="cat-name">少年热血</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">❤️</span>
+                        <span class="cat-name">少女恋爱</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">👻</span>
+                        <span class="cat-name">恐怖惊悚</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">🦸</span>
+                        <span class="cat-name">超级英雄</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">🐉</span>
+                        <span class="cat-name">玄幻修真</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">🏛️</span>
+                        <span class="cat-name">历史军事</span>
+                    </a>
+                    <a href="#" class="cat-item">
+                        <span class="cat-icon">🍎</span>
+                        <span class="cat-name">搞笑爆笑</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Latest Updates -->
+            <section class="latest-updates">
+                <div class="section-header">
+                    <h2>最新更新</h2>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                <div class="comic-grid">
+                    <!-- Comic Item 1 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">日漫</span>
+                            <img src="https://picsum.photos/seed/comic1/300/420" alt="海贼王封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">海贼王：热血航路</h3>
+                            <div class="card-meta">
+                                <span>更新至 1089话</span>
+                                <span>刚刚</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Comic Item 2 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">韩漫</span>
+                            <img src="https://picsum.photos/seed/comic2/300/420" alt="我的奇幻室友封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">我的奇幻室友</h3>
+                            <div class="card-meta">
+                                <span>更新至 45话</span>
+                                <span>10分钟前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Comic Item 3 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">国漫</span>
+                            <img src="https://picsum.photos/seed/comic3/300/420" alt="一人之下封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">一人之下</h3>
+                            <div class="card-meta">
+                                <span>更新至 642话</span>
+                                <span>1小时前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Comic Item 4 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">日漫</span>
+                            <img src="https://picsum.photos/seed/comic4/300/420" alt="咒术回战封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">咒术回战</h3>
+                            <div class="card-meta">
+                                <span>更新至 240话</span>
+                                <span>2小时前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Comic Item 5 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">韩漫</span>
+                            <img src="https://picsum.photos/seed/comic5/300/420" alt="无限大封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">无限大</h3>
+                            <div class="card-meta">
+                                <span>更新至 12话</span>
+                                <span>3小时前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Comic Item 6 -->
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">日漫</span>
+                            <img src="https://picsum.photos/seed/comic6/300/420" alt="鬼灭之刃封面">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">鬼灭之刃</h3>
+                            <div class="card-meta">
+                                <span>完结</span>
+                                <span>昨天</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Ranking Section -->
+            <section class="ranking">
+                <div class="section-header">
+                    <h2>本周热门榜单</h2>
+                    <a href="#">全榜单 &gt;</a>
+                </div>
+                <div class="comic-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">TOP1</span>
+                            <img src="https://picsum.photos/seed/rank1/300/420" alt="进击的巨人">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">进击的巨人</h3>
+                            <div class="card-meta">
+                                <span>评分: 9.8</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">TOP2</span>
+                            <img src="https://picsum.photos/seed/rank2/300/420" alt="火影忍者">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">火影忍者</h3>
+                            <div class="card-meta">
+                                <span>评分: 9.7</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="comic-card">
+                        <div class="card-cover">
+                            <span class="card-tag">TOP3</span>
+                            <img src="https://picsum.photos/seed/rank3/300/420" alt="全职猎人">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">全职猎人</h3>
+                            <div class="card-meta">
+                                <span>评分: 9.6</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar">
+            <!-- Login Widget -->
+            <div class="sidebar-widget" style="text-align: center; padding: 30px 20px;">
+                <h3 style="margin-bottom: 15px; color: var(--secondary-color);">欢迎来到风车网</h3>
+                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 20px;">登录后可以收藏喜欢的作品、发表评论并同步阅读进度。</p>
+                <a href="#" class="btn btn-primary" style="width: 100%;">立即登录</a>
+                <a href="#" style="display: block; margin-top: 10px; font-size: 13px; color: var(--primary-color);">注册新账号</a>
+            </div>
+
+            <!-- Ranking List -->
+            <div class="sidebar-widget">
+                <h3 style="margin-bottom: 15px; color: var(--secondary-color); font-size: 18px;">阅读排行</h3>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-num">1</span>
+                        <span class="rank-title">一拳超人</span>
+                        <span class="rank-views">120w</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">2</span>
+                        <span class="rank-title">东京食尸鬼</span>
+                        <span class="rank-views">98w</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">3</span>
+                        <span class="rank-title">银魂</span>
+                        <span class="rank-views">85w</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">4</span>
+                        <span class="rank-title">死神</span>
+                        <span class="rank-views">72w</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">5</span>
+                        <span class="rank-title">火影忍者</span>
+                        <span class="rank-views">65w</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">6</span>
+                        <span class="rank-title">海贼王</span>
+                        <span class="rank-views">60w</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Ad Placeholder -->
+            <div class="sidebar-widget">
+                <img src="https://picsum.photos/seed/ad/300/250" alt="广告位" style="border-radius: 4px; width: 100%;">
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>关于风车网</h3>
+                    <p style="font-size: 14px; line-height: 1.8;">风车网是一个专注于二次元文化的漫画分享平台，致力于为用户提供最新、最全、最流畅的免费漫画阅读服务。我们尊重版权，收录大量正版授权作品。</p>
+                </div>
+                <div class="footer-col">
+                    <h3>快速导航</h3>
+                    <ul>
+                        <li><a href="#">日漫专区</a></li>
+                        <li><a href="#">韩漫专区</a></li>
+                        <li><a href="#">国漫专区</a></li>
+                        <li><a href="#">轻小说</a></li>
+                        <li><a href="#">排行榜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>帮助中心</h3>
+                    <ul>
+                        <li><a href="#">用户注册</a></li>
+                        <li><a href="#">如何阅读</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>关注我们</h3>
+                    <p style="font-size: 14px; margin-bottom: 10px;">扫描二维码关注风车网公众号</p>
+                    <img src="https://picsum.photos/seed/qrcode/100/100" alt="微信公众号二维码" style="width: 100px; height: 100px; border-radius: 4px;">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 风车网 版权所有. 保留所有权利. 本站内容仅供学习交流使用.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+              </html>

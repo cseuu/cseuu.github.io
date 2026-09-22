@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="韩如冰 - 专业个人主页展示平台。包含个人简介、作品集、项目展示、联系方式及最新动态。">
+    <meta name="keywords" content="韩如冰,个人主页,作品集,简历,设计,开发">
+    <title>韩如冰 - 个人主页与作品展示平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e1e4e8;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--card-bg);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 100px;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .bio-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .bio-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Works/Portfolio Section */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .work-image {
+            height: 200px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .work-card:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .work-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .work-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background-color: #eef2f7;
+            color: var(--primary-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin-left: 1.5rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                position: static;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span>韩</span>如冰
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#works">作品集</a></li>
+                    <li><a href="#skills">专业技能</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <img src="https://picsum.photos/seed/hanrubing/300/300" alt="韩如冰头像" class="avatar">
+                <h1>韩如冰</h1>
+                <p>资深全栈开发工程师 & UI/UX 设计师</p>
+                <p>专注于构建高性能 Web 应用与极致用户体验。</p>
+                <div class="hero-buttons">
+                    <a href="#works" class="btn">查看作品</a>
+                    <a href="#contact" class="btn btn-outline">联系我</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">关于我</h2>
+                <div class="about-grid">
+                    <aside class="info-card">
+                        <div class="info-item">
+                            <div class="info-label">姓名</div>
+                            <div class="info-value">韩如冰</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">职位</div>
+                            <div class="info-value">高级工程师</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">经验</div>
+                            <div class="info-value">8 年</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">所在地</div>
+                            <div class="info-value">中国，北京</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">邮箱</div>
+                            <div class="info-value">hanrubing@example.com</div>
+                        </div>
+                    </aside>
+                    <article class="bio-content">
+                        <h3>职业背景</h3>
+                        <p>韩如冰拥有超过八年的软件开发与设计经验，深耕于互联网行业。他/她不仅精通前端技术栈，对后端架构也有深刻的理解。在职业生涯中，韩如冰曾主导多个大型项目的开发，擅长解决复杂的技术难题，并致力于提升产品的用户体验。</p>
+                        <h3>设计理念</h3>
+                        <p>在设计方面，韩如冰主张“少即是多”的原则，强调界面的简洁性与交互的流畅性。他/她认为优秀的产品应当是无形的，即用户在使用过程中不应察觉到技术的存在，而应专注于完成自己的目标。通过深入的用户研究和数据分析，韩如冰总能创造出既美观又实用的数字产品。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works/Portfolio Section -->
+        <section id="works" class="section" style="background-color: white;">
+            <div class="container">
+                <h2 class="section-title">精选作品</h2>
+                <div class="works-grid">
+                    <!-- Project 1 -->
+                    <article class="work-card">
+                        <div class="work-image">
+                            <img src="https://picsum.photos/seed/project1/600/400" alt="企业级数据可视化平台">
+                        </div>
+                        <div class="work-info">
+                            <span class="work-category">Web 应用开发</span>
+                            <h3 class="work-title">企业级数据可视化平台</h3>
+                            <p class="work-desc">基于 React 和 D3.js 构建的实时数据监控大屏，服务于金融与物流行业。</p>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="work-card">
+                        <div class="work-image">
+                            <img src="https://picsum.photos/seed/project2/600/400" alt="移动端电商 APP">
+                        </div>
+                        <div class="work-info">
+                            <span class="work-category">UI/UX 设计</span>
+                            <h3 class="work-title">新一代移动端电商 APP</h3>
+                            <p class="work-desc">重新设计的购物流程，提升了 40% 的用户转化率，获得设计行业奖项。</p>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="work-card">
+                        <div class="work-image">
+                            <img src="https://picsum.photos/seed/project3/600/400" alt="智能社区管理系统">
+                        </div>
+                        <div class="work-info">
+                            <span class="work-category">全栈开发</span>
+                            <h3 class="work-title">智慧社区管理系统</h3>
+                            <p class="work-desc">集成物联网技术的社区服务平台，实现了门禁、报修与物业管理的数字化。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">专业技能</h2>
+                <div class="skills-container">
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">React / Vue</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">Web Performance</span>
+                    <span class="skill-tag">Agile / Scrum</span>
+                    <span class="skill-tag">Git / CI/CD</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background-color: white;">
+            <div class="container">
+                <h2 class="section-title">联系我</h2>
+                <div class="about-grid" style="grid-template-columns: 1fr;">
+                    <article class="bio-content">
+                        <h3>寻求合作</h3>
+                        <p>如果您有项目合作意向、技术交流需求，或者只是想聊聊设计，欢迎随时通过以下方式联系我。我通常会在 24 小时内回复。</p>
+                        <p>目前主要接受远程兼职项目与长期技术顾问邀请。</p>
+                    </article>
+                    <div style="background: #f8f9fa; padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('感谢您的留言，我会尽快回复！');">
+                            <div style="margin-bottom: 1rem;">
+                                <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">您的称呼</label>
+                                <input type="text" id="name" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius);" required>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">电子邮箱</label>
+                                <input type="email" id="email" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius);" required>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">留言内容</label>
+                                <textarea id="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius);" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">发送留言</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-text">
+                &copy; 2023 韩如冰. 保留所有权利.
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('#main-nav');
+
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuBtn.textContent = '☰';
+                    }
+                    
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active Link Highlighting on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+  </html>

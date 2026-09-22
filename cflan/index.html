@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CF兰攻略 - 穿越火线（CF）角色兰的详细介绍、技能解析、获取方式及实战搭配推荐。提供最新版本兰的属性分析，助您在爆破模式中发挥最大优势。">
+    <meta name="keywords" content="cf兰,穿越火线,CF角色,CF兰攻略,CF兰技能,CF兰属性">
+    <title>cf兰-CF穿越火线角色兰属性详解与实战攻略</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e6b800; /* CF标志性金色 */
+            --primary-dark: #cca300;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-header: #0f0f0f;
+            --text-main: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-red: #ff4d4d;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-header);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/cf_lan_hero/1600/900.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(230, 184, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: normal;
+            margin-left: 15px;
+        }
+
+        /* Character Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .stat-val {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Skill Section */
+        .skill-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .skill-item {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            border: 2px solid var(--primary-color);
+        }
+
+        .skill-content h3 {
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .skill-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .sidebar-widget h3 {
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .guide-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 15px;
+        }
+
+        .guide-list li:last-child {
+            border-bottom: none;
+        }
+
+        .guide-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .guide-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .guide-list span {
+            background-color: #333;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .comparison-table th {
+            background-color: #252525;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: #2a2a2a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <span>CF</span> 兰攻略站
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">角色主页</a></li>
+                <li><a href="#skills">技能解析</a></li>
+                <li><a href="#comparison">属性对比</a></li>
+                <li><a href="#guide">实战指南</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>CF兰：暗夜中的致命毒药</h1>
+        <p>深入解析CF穿越火线角色“兰”的背景故事、专属技能及实战应用，助您在生化与爆破模式中制霸战场。</p>
+        <a href="#skills" class="btn">查看详细技能</a>
+    </div>
+</div>
+
+<div class="container">
+    <main>
+        <!-- 角色简介 -->
+        <section id="intro">
+            <div class="section-title">
+                角色档案
+                <span>Character Profile</span>
+            </div>
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>角色代号</h3>
+                    <p>代号“兰”，隶属于神秘组织，身手矫健，擅长使用匕首与近战武器。</p>
+                </article>
+                <article class="info-card">
+                    <h3>所属阵营</h3>
+                    <p>潜伏者（隐秘行动组）</p>
+                </article>
+                <article class="info-card">
+                    <h3>主要定位</h3>
+                    <p>近战高爆发、侦查、渗透</p>
+                </article>
+                <article class="info-card">
+                    <h3>推荐模式</h3>
+                    <p>生化模式、爆破模式</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 技能详解 -->
+        <section id="skills">
+            <div class="section-title">
+                专属技能
+                <span>Special Skills</span>
+            </div>
+            <div class="skill-list">
+                <div class="skill-item">
+                    <div class="skill-icon">☠️</div>
+                    <div class="skill-content">
+                        <h3>毒刃（主动技能）</h3>
+                        <p>兰挥舞匕首时，附带有特殊的毒气效果。在生化模式中，被攻击的僵尸会短暂减速并持续流失生命值，极大削弱僵尸的追击能力。</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🏃</div>
+                    <div class="skill-content">
+                        <h3>幽灵步伐（被动技能）</h3>
+                        <p>兰在潜伏状态下移动速度提升15%。这一特性使其在爆破模式中能够快速抢占重要点位，或在生化模式中更灵活地躲避尸潮。</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">⚡</div>
+                    <div class="skill-content">
+                        <h3>致命一击（近战）</h3>
+                        <p>兰的近战攻击伤害较高，且在击杀敌人后有极短时间的攻速提升，适合在近距离遭遇战中瞬间秒杀对手。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 属性对比 -->
+        <section id="comparison">
+            <div class="section-title">
+                属性数据对比
+                <span>Attribute Comparison</span>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>属性项目</th>
+                            <th>兰</th>
+                            <th>普通角色</th>
+                            <th>雷神</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>移动速度</td>
+                            <td class="stat-val" style="color:var(--primary-color)">+15%</td>
+                            <td>0%</td>
+                            <td>+5%</td>
+                        </tr>
+                        <tr>
+                            <td>生化伤害</td>
+                            <td class="stat-val" style="color:var(--primary-color)">+20%</td>
+                            <td>0%</td>
+                            <td>+20%</td>
+                        </tr>
+                        <tr>
+                            <td>近战射速</td>
+                            <td class="stat-val" style="color:var(--primary-color)">+10%</td>
+                            <td>0%</td>
+                            <td>+15%</td>
+                        </tr>
+                        <tr>
+                            <td>跳跃高度</td>
+                            <td>标准</td>
+                            <td>标准</td>
+                            <td>+10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <!-- 实战指南 -->
+        <div class="sidebar-widget">
+            <h3>实战搭配指南</h3>
+            <ul class="guide-list">
+                <li>
+                    <a href="#">
+                        <span>生化模式：毒刃卡点技巧</span>
+                        <span>Guide</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>爆破模式：潜伏者开局思路</span>
+                        <span>Tips</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>武器推荐：搭配雷神使用</span>
+                        <span>Loadout</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>兰 vs 虎牙：谁更强？</span>
+                        <span>Analysis</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 获取方式 -->
+        <div class="sidebar-widget">
+            <h3>如何获取</h3>
+            <p style="color:var(--text-secondary); font-size:14px; margin-bottom:15px;">
+                兰作为稀有角色，通常通过CF官方活动、军需系统或特定节日礼包获得。
+            </p>
+            <a href="#" class="btn" style="width:100%; text-align:center; font-size:14px;">查看最新军需</a>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="sidebar-widget">
+            <h3>常见问题 (FAQ)</h3>
+            <div style="font-size:14px; color:var(--text-secondary);">
+                <p style="margin-bottom:10px;"><strong>Q: 兰的毒刃能毒死生化幽灵吗？</strong></p>
+                <p style="margin-bottom:15px; color:#ccc;">A: 毒刃主要效果是减缓僵尸速度，无法直接毒死僵尸，但能配合队友击杀。</p>
+                <p><strong>Q: 兰需要充值才能获得吗？</strong></p>
+                <p style="color:#ccc;">A: 部分版本兰会作为活动奖励发放，但大部分情况下需通过军需抽取。</p>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">关于我们</a>
+        <a href="#">免责声明</a>
+        <a href="#">联系方式</a>
+        <a href="#">加入我们</a>
+    </div>
+    <p class="copyright">© 2023 CF兰攻略站 - 非官方网站，仅供玩家交流参考。穿越火线为腾讯游戏旗下产品。</p>
+</footer>
+
+</body>
+</html>

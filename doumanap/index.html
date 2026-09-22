@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="抖漫APP下载 - 沉浸式二次元漫画阅读体验，海量正版韩漫、日漫、国产漫画资源，高清画质，无广告纯净阅读，支持离线下载。">
+    <meta name="keywords" content="抖漫app, 抖漫下载, 漫画阅读, 韩漫推荐, 在线漫画, 二次元">
+    <title>抖漫app-正版漫画阅读与韩漫推荐平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --accent-color: #ffa502;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-light: #747d8c;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Feature Grid */
+        .features {
+            padding: 60px 0;
+            background: var(--card-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            background: var(--bg-color);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Ranking Section */
+        .ranking {
+            padding: 60px 0;
+        }
+
+        .ranking-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .rank-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.3s;
+        }
+
+        .rank-item:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .rank-cover {
+            width: 100px;
+            height: 140px;
+            flex-shrink: 0;
+        }
+
+        .rank-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rank-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .rank-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            gap: 15px;
+        }
+
+        .rank-tags span {
+            background: #f1f2f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .rank-rank {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            background: #ccc;
+        }
+
+        .rank-rank.top-1 { background: #ff4757; }
+        .rank-rank.top-2 { background: #ffa502; }
+        .rank-rank.top-3 { background: #ff6b81; }
+
+        .ranking-sidebar {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .category-list li {
+            margin-bottom: 15px;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background: #f1f2f6;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        /* App Preview */
+        .app-preview {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+
+        .preview-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .preview-text {
+            flex: 1;
+        }
+
+        .preview-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .preview-text p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .check-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-icon {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .preview-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: #000;
+            border-radius: 40px;
+            margin: 0 auto;
+            border: 8px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            overflow-y: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #dfe4ea;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #a4b0be;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #747d8c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .ranking-layout {
+                grid-template-columns: 1fr;
+            }
+            .preview-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .check-list li {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/>
+                </svg>
+                抖漫<span>APP</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">韩漫推荐</a>
+                <a href="#">日漫精选</a>
+                <a href="#">国产连载</a>
+                <a href="#">排行榜</a>
+            </nav>
+            <a href="#download" class="btn-download">立即下载</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>发现精彩漫画，随时随地阅读</h1>
+                <p>抖漫APP为您提供海量正版漫画资源，高清流畅的阅读体验，无广告打扰，支持离线缓存，是您口袋里的漫画图书馆。</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-download" style="background: var(--text-main);">立即体验</a>
+                    <a href="#" style="display:inline-block; color:var(--text-light);">查看更新日志 &rarr;</a>
+                </div>
+                <div class="hero-tags">
+                    <span class="tag">🔥 热门韩漫</span>
+                    <span class="tag">✨ 高清画质</span>
+                    <span class="tag">🚀 极速更新</span>
+                    <span class="tag">🛡️ 安全纯净</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">为什么选择抖漫APP</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>海量资源</h3>
+                        <p>收录超过10万部漫画作品，涵盖日漫、韩漫、国漫及欧美漫画，满足不同阅读偏好。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>极速更新</h3>
+                        <p>与各大漫画平台同步更新，第一时间追更热门连载，不错过任何精彩剧情。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>离线缓存</h3>
+                        <p>支持一键缓存章节，无网络也能畅读，适合通勤、旅行等碎片化时间阅读。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>高清画质</h3>
+                        <p>支持多种清晰度切换，智能适配屏幕尺寸，带来如阅读原画般的视觉享受。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section class="ranking">
+            <div class="container">
+                <div class="ranking-layout">
+                    <div>
+                        <h2 class="section-title">本周热门榜单</h2>
+                        <div class="ranking-list">
+                            <!-- Rank 1 -->
+                            <div class="rank-item">
+                                <div class="rank-cover">
+                                    <img src="https://picsum.photos/seed/manga1/200/300" alt="漫画封面">
+                                </div>
+                                <div class="rank-info">
+                                    <div>
+                                        <div class="rank-title">[韩漫] 霸总爱上我：契约婚姻</div>
+                                        <div class="rank-meta">
+                                            <span>1.2亿热度</span>
+                                            <span>12.5万人追更</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-tags">
+                                        <span>都市</span>
+                                        <span>恋爱</span>
+                                    </div>
+                                </div>
+                                <div class="rank-rank top-1">1</div>
+                            </div>
+                            <!-- Rank 2 -->
+                            <div class="rank-item">
+                                <div class="rank-cover">
+                                    <img src="https://picsum.photos/seed/manga2/200/300" alt="漫画封面">
+                                </div>
+                                <div class="rank-info">
+                                    <div>
+                                        <div class="rank-title">[日漫] 魔法少女的转生日常</div>
+                                        <div class="rank-meta">
+                                            <span>8900万热度</span>
+                                            <span>9.8万人追更</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-tags">
+                                        <span>奇幻</span>
+                                        <span>搞笑</span>
+                                    </div>
+                                </div>
+                                <div class="rank-rank top-2">2</div>
+                            </div>
+                            <!-- Rank 3 -->
+                            <div class="rank-item">
+                                <div class="rank-cover">
+                                    <img src="https://picsum.photos/seed/manga3/200/300" alt="漫画封面">
+                                </div>
+                                <div class="rank-info">
+                                    <div>
+                                        <div class="rank-title">[国漫] 九州神魔录</div>
+                                        <div class="rank-meta">
+                                            <span>7500万热度</span>
+                                            <span>7.2万人追更</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-tags">
+                                        <span>玄幻</span>
+                                        <span>热血</span>
+                                    </div>
+                                </div>
+                                <div class="rank-rank top-3">3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <aside>
+                        <div class="ranking-sidebar">
+                            <h3 class="sidebar-title">热门分类</h3>
+                            <ul class="category-list">
+                                <li><a href="#">🔥 韩国漫画 <span class="category-count">5000+</span></a></li>
+                                <li><a href="#">🎌 日本动漫 <span class="category-count">3200+</span></a></li>
+                                <li><a href="#">🐉 中国原创 <span class="category-count">1800+</span></a></li>
+                                <li><a href="#">👻 恐怖惊悚 <span class="category-count">900+</span></a></li>
+                                <li><a href="#">💑 言情恋爱 <span class="category-count">1500+</span></a></li>
+                                <li><a href="#">🦸 超级英雄 <span class="category-count">600+</span></a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Preview Section -->
+        <section class="app-preview" id="download">
+            <div class="container">
+                <div class="preview-container">
+                    <div class="preview-text">
+                        <h2>极致阅读体验，专为漫画爱好者打造</h2>
+                        <p>无论是深夜追更，还是通勤路上消磨时间，抖漫APP都能为您提供最舒适的阅读环境。界面简洁现代，操作流畅自然。</p>
+                        <ul class="check-list">
+                            <li><span class="check-icon">✓</span> 完全免费阅读，无隐形收费</li>
+                            <li><span class="check-icon">✓</span> 智能断章，阅读进度自动保存</li>
+                            <li><span class="check-icon">✓</span> 个性化书架，管理您的阅读收藏</li>
+                            <li><span class="check-icon">✓</span> 支持夜间模式和护眼模式</li>
+                        </ul>
+                    </div>
+                    <div class="preview-image">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <img src="https://picsum.photos/seed/mangaapp/300/600" alt="APP界面预览" style="opacity: 0.9;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于抖漫</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">账号安全</a></li>
+                        <li><a href="#">版权声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">漫画之家</a></li>
+                        <li><a href="#">动漫之家</a></li>
+                        <li><a href="#">腾讯动漫</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>下载APP</h4>
+                    <p style="font-size: 13px; color: #a4b0be; line-height: 1.8;">
+                        扫描二维码下载<br>
+                        抖漫官方客户端<br>
+                        安全、稳定、免费
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 抖漫APP 版权所有 | 本站内容仅供学习交流，请支持正版漫画</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

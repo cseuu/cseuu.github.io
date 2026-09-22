@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猪妹-英雄联盟人气英雄图鉴与实战玩法指南</title>
+    <meta name="description" content="猪妹（阿利斯塔）英雄联盟英雄详细介绍，包含出装推荐、技能加点、连招技巧、对线思路及S13/S14赛季符文搭配，助你上分必备攻略。">
+    <meta name="keywords" content="猪妹, 阿利斯塔, 英雄联盟, 猪妹攻略, 猪妹出装, 猪妹符文, 英雄联盟打野">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #f5a623;
+            --secondary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tags span {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 5px;
+        }
+
+        /* Quick Nav */
+        .quick-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: -3rem;
+            margin-bottom: 3rem;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nav-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.6rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Skill Cards */
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .skill-icon {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        .skill-icon.r {
+            background: linear-gradient(to right, #f12711, #f5af19);
+        }
+
+        .skill-icon.q {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+        }
+
+        .skill-icon.w {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+        }
+
+        .skill-icon.e {
+            background: linear-gradient(to right, #8E2DE2, #4A00E0);
+        }
+
+        .skill-info {
+            padding: 1rem;
+        }
+
+        .skill-info h4 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .skill-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Build Section */
+        .build-container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .build-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .build-tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            border-bottom: 3px solid transparent;
+        }
+
+        .build-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .build-content {
+            display: none;
+        }
+
+        .build-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .item-row {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .item-name {
+            width: 30%;
+            font-weight: 500;
+        }
+
+        .item-desc {
+            width: 70%;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .guide-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .guide-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .guide-list li:last-child {
+            border-bottom: none;
+        }
+
+        .guide-list a {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .guide-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .guide-list span {
+            font-size: 0.8rem;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: none;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .faq-item.active .faq-question::before {
+            content: '+';
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-right: 10px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ecf0f1;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            .quick-nav { grid-template-columns: 1fr 1fr; }
+            .header-inner { flex-direction: column; height: auto; padding: 1rem 0; gap: 1rem; }
+            nav ul { gap: 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>⚔️</span> LOL英雄攻略网
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">英雄排行</a></li>
+                    <li><a href="#">符文天赋</a></li>
+                    <li><a href="#">出装推荐</a></li>
+                    <li><a href="#">视频教学</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn" aria-label="搜索">🔍</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>猪妹</h1>
+            <p>阿利斯塔，草原野性的守护者。拥有极强的控制能力和开团能力，是团战中的核心坦克与先手。</p>
+            <div class="hero-tags">
+                <span>打野</span>
+                <span>控制型坦克</span>
+                <span>开团英雄</span>
+                <span>逆风翻盘</span>
+            </div>
+        </section>
+
+        <div class="quick-nav">
+            <div class="nav-card" onclick="window.location.href='#build'">
+                <h3>🛠️ 出装推荐</h3>
+                <p>当前版本S13/S14出装方案</p>
+            </div>
+            <div class="nav-card" onclick="window.location.href='#skills'">
+                <h3>⚡ 技能加点</h3>
+                <p>R-Q-E-W 标准连招解析</p>
+            </div>
+            <div class="nav-card" onclick="window.location.href='#runes'">
+                <h3>✨ 符文天赋</h3>
+                <p>主宰/坚决系最佳搭配</p>
+            </div>
+            <div class="nav-card" onclick="window.location.href='#guide'">
+                <h3>📖 实战技巧</h3>
+                <p>野区刷野路线与Gank思路</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="content-grid">
+            <!-- Left Column -->
+            <div class="main-content">
+                
+                <!-- Skills Section -->
+                <section id="skills">
+                    <div class="section-header">
+                        <h2 class="section-title">技能机制详解</h2>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-card">
+                            <div class="skill-icon q">Q</div>
+                            <div class="skill-info">
+                                <h4>野蛮冲撞</h4>
+                                <p>猪妹向前冲锋并击晕敌人，对周围造成伤害。是猪妹最重要的位移和控制手段，用于追击或逃跑。</p>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon w">W</div>
+                            <div class="skill-info">
+                                <h4>坚韧不拔</h4>
+                                <p>被动：受到伤害时获得护盾。主动：释放后获得护盾并提升移速。核心生存技能。</p>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon e">E</div>
+                            <div class="skill-info">
+                                <h4>野性突袭</h4>
+                                <p>猪妹践踏地面，对周围造成伤害并降低敌人攻击速度。配合R技能使用效果更佳。</p>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon r">R</div>
+                            <div class="skill-info">
+                                <h4>天崩地裂</h4>
+                                <p>猪妹撕裂地面，制造一个持续伤害的沟壑。处于沟壑中的敌人会被减速。开启大招时获得高额双抗。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Build Section -->
+                <section id="build">
+                    <div class="section-header">
+                        <h2 class="section-title">出装与符文</h2>
+                    </div>
+                    <div class="build-container">
+                        <div class="build-tabs">
+                            <div class="build-tab active" onclick="switchTab(event, 'tank')">坦克流</div>
+                            <div class="build-tab" onclick="switchTab(event, 'damage')">半肉输出</div>
+                        </div>
+
+                        <div id="tank" class="build-content active">
+                            <div class="item-row">
+                                <span class="item-name">日炎圣盾</span>
+                                <span class="item-desc">核心装备，提供生命值、护甲和灼烧效果，完美契合猪妹的团战定位。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">冰霜之心</span>
+                                <span class="item-desc">增加护甲和法力值，被动减少敌人攻速，防止敌方射手输出。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">兰顿之兆</span>
+                                <span class="item-desc">主动开启减少敌人攻速并造成范围伤害，是应对敌方AD爆发的关键。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">救赎</span>
+                                <span class="item-desc">团队辅助装备，加速队友回血，增加团战续航能力。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">石像鬼板甲</span>
+                                <span class="item-desc">应对敌方法术爆发，开团瞬间开启大幅提升双抗。</span>
+                            </div>
+                        </div>
+
+                        <div id="damage" class="build-content">
+                            <div class="item-row">
+                                <span class="item-name">海克斯科技枪刃</span>
+                                <span class="item-desc">增加法术强度和生命偷取，主动技能提供双倍伤害，适合追求伤害的猪妹。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">三相之力</span>
+                                <span class="item-desc">提升普攻和技能伤害，增加移动速度，让猪妹的Q技能伤害更高。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">斯特拉克的挑战护手</span>
+                                <span class="item-desc">提供生命值和护甲，并在低血量时提供护盾，防止被秒杀。</span>
+                            </div>
+                            <div class="item-row">
+                                <span class="item-name">玛莫提乌斯之噬</span>
+                                <span class="item-desc">对抗高魔抗敌人时的选择，提供法术强度和魔抗，利用吸血续航。</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Guide Section -->
+                <section id="guide">
+                    <div class="section-header">
+                        <h2 class="section-title">实战玩法指南</h2>
+                    </div>
+                    <article style="background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <h3>1. 前期思路</h3>
+                        <p>猪妹的刷野效率中等，建议从<strong>蓝Buff</strong>开局。利用W技能的护盾和被动减少野怪伤害。2级时可以利用Q技能位移到野怪身上造成晕眩，配合E技能减速，完成一级团或反野。</p>
+                        <br>
+                        <h3>2. 团战切入点</h3>
+                        <p>猪妹是典型的开团英雄。不要等待敌人走位失误，主动寻找机会。最佳开团时机是敌方关键输出（如ADC或法师）走位靠前时。使用R技能天崩地裂分割战场，将敌方后排困在沟壑中，随后接Q技能控制，利用E技能加速切入。</p>
+                        <br>
+                        <h3>3. 连招技巧</h3>
+                        <p><strong>标准连招：</strong>R(开团) -> E(践踏) -> Q(击飞) -> W(护盾) -> 平A。这套连招可以在短时间内打出高额控制和伤害，瞬间打乱敌方阵型。</p>
+                    </article>
+                </section>
+
+            </div>
+
+            <!-- Right Column -->
+            <aside>
+                <!-- Related Guides -->
+                <div class="guide-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">热门攻略</h3>
+                    <ul class="guide-list">
+                        <li><a href="#">猪妹打野路线图详解</a> <span>新手</span></li>
+                        <li><a href="#">猪妹 vs 赵信 对线分析</a> <span>进阶</span></li>
+                        <li><a href="#">猪妹如何克制豹女</a> <span>克制</span></li>
+                        <li><a href="#">猪妹大招R的释放时机</a> <span>技巧</span></li>
+                        <li><a href="#">猪妹反野Gank思路</a> <span>实战</span></li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">常见问题 (FAQ)</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">猪妹现在还强势吗？</div>
+                        <div class="faq-answer">猪妹在当前版本依然是T1级别的打野，尤其是在版本改动增加野怪伤害后，她作为前排坦克的地位更加稳固。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">猪妹适合什么段位玩？</div>
+                        <div class="faq-answer">猪妹适合黄金到王者段位，因为开团需要一定的意识和时机判断，新手玩家建议先练习好Q技能的预判。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">猪妹应该走哪条路？</div>
+                        <div class="faq-answer">猪妹主要定位是打野，偶尔也可以走辅助位（辅助猪妹）。</div>
+                    </div>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div style="background: #ddd; height: 250px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #666;">
+                    广告位
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">免责声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>英雄分类</h4>
+                    <ul>
+                        <li><a href="#">上单英雄</a></li>
+                        <li><a href="#">中单英雄</a></li>
+                        <li><a href="#">射手英雄</a></li>
+                        <li><a href="#">辅助英雄</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">符文模拟器</a></li>
+                        <li><a href="#">皮肤预览</a></li>
+                        <li><a href="#">赛事资讯</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 LOL英雄攻略网. All rights reserved. 本站内容仅供学习交流，与Riot Games无关。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(event, tabId) {
+            // Remove active class from all tabs and contents
+            const tabs = document.querySelectorAll('.build-tab');
+            const contents = document.querySelectorAll('.build-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and target content
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+              </html>

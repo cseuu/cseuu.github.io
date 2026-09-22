@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="电影建党伟业专题页，提供电影剧情简介、演员阵容、导演信息、经典台词、幕后制作花絮及观影指南。深入了解中国建党历史题材电影，重温那段波澜壮阔的岁月。">
+    <meta name="keywords" content="电影建党伟业, 建党伟业, 影视资讯, 经典电影, 中国电影, 历史题材电影">
+    <title>电影建党伟业-经典历史巨制与观影指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-red: #c8102e;
+            --primary-dark: #8a0e22;
+            --gold: #d4af37;
+            --text-dark: #1a1a1a;
+            --text-gray: #666666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e5e5e5;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            font-size: 12px;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/revolution/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn Up 1s ease-out;
+        }
+
+        .hero-tag {
+            background-color: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 15px;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -17px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-red);
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Movie Info Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .movie-poster {
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .movie-poster img {
+            width: 100%;
+            display: block;
+        }
+
+        .movie-details h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary-red);
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .movie-desc {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .info-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        /* Cast List */
+        .cast-section {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .cast-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .cast-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .cast-item:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.1);
+        }
+
+        .cast-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .cast-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .cast-role {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* Timeline/Plot */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-red);
+            border-radius: 50%;
+            border: 2px solid var(--white);
+        }
+
+        .timeline-year {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            font-size: 15px;
+            color: var(--text-gray);
+        }
+
+        /* Quotes */
+        .quote-section {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 24px;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            background-color: var(--primary-red);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #999;
+            padding: 60px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+            }
+
+            .movie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        关注中国电影历史，重温光辉岁月
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+                <span>影史回眸</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">经典榜单</a></li>
+                    <li><a href="#">人物传记</a></li>
+                    <li><a href="#">历史档案</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">2011年上映</span>
+            <h1>电影《建党伟业》</h1>
+            <p>全景式展现中国近代史上一段风云激荡的岁月，重温中国共产党诞生的光辉历程。</p>
+            <div>
+                <button class="btn btn-primary">观看预告片</button>
+                <button class="btn btn-outline">剧情简介</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Movie Info Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">影片档案</h2>
+                <a href="#" class="section-more">查看更多资料 &rarr;</a>
+            </div>
+            <div class="movie-grid">
+                <div class="movie-poster">
+                    <img src="https://picsum.photos/seed/movieposter1/400/600.jpg" alt="电影建党伟业海报">
+                </div>
+                <div class="movie-details">
+                    <h2>建党伟业</h2>
+                    <div class="movie-meta">
+                        <span class="rating">★ 7.8</span>
+                        <span>|</span>
+                        <span>历史 / 战争 / 剧情</span>
+                        <span>|</span>
+                        <span>2011年</span>
+                        <span>|</span>
+                        <span>146分钟</span>
+                    </div>
+                    <div class="info-tags">
+                        <span class="tag">建党90周年献礼片</span>
+                        <span class="tag">重大革命历史题材</span>
+                        <span class="tag">全明星阵容</span>
+                        <span class="tag">IMAX版</span>
+                    </div>
+                    <p class="movie-desc">
+                        电影《建党伟业》是为庆祝中国共产党建党90周年而打造的献礼影片。影片从1911年辛亥革命爆发开始，至1921年中国共产党第一次全国代表大会召开为止，展现了中国近代史上那段风云变幻、血与火交织的峥嵘岁月。
+                    </p>
+                    <p class="movie-desc">
+                        影片重点描绘了从辛亥革命到五四运动，再到中国共产党的建立这一历史进程。通过大量历史人物，如孙中山、黄兴、袁世凯、李大钊、陈独秀、毛泽东、周恩来等，展现了那个时代仁人志士为救亡图存、寻求真理而不懈奋斗的精神风貌。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cast Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">主要演员</h2>
+            </div>
+            <div class="cast-section">
+                <div class="cast-list">
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor1/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">黄建新</div>
+                        <div class="cast-role">导演</div>
+                    </div>
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor2/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">刘烨</div>
+                        <div class="cast-role">饰演 毛泽东</div>
+                    </div>
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor3/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">陈坤</div>
+                        <div class="cast-role">饰演 蒋介石</div>
+                    </div>
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor4/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">张震</div>
+                        <div class="cast-role">饰演 毛泽东</div>
+                    </div>
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor5/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">周润发</div>
+                        <div class="cast-role">饰演 袁世凯</div>
+                    </div>
+                    <div class="cast-item">
+                        <img src="https://picsum.photos/seed/actor6/100/100.jpg" alt="演员" class="cast-avatar">
+                        <div class="cast-name">刘亦菲</div>
+                        <div class="cast-role">饰演 唐绍仪</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">历史脉络</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1911年</div>
+                    <div class="timeline-content">辛亥革命爆发，清王朝被推翻，中国进入民国初期，但社会动荡不安。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1915年</div>
+                    <div class="timeline-content">陈独秀在上海创办《青年杂志》（后改名《新青年》），新文化运动兴起。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1919年</div>
+                    <div class="timeline-content">巴黎和会外交失败，五四运动爆发，中国工人阶级开始登上历史舞台。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1921年</div>
+                    <div class="timeline-content">各地共产主义小组代表云集上海，召开中国共产党第一次全国代表大会，宣告中国共产党成立。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <p class="quote-text">“为有牺牲多壮志，敢教日月换新天。”</p>
+            <p class="quote-author">—— 影片经典台词，致敬建党先驱</p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">观影指南</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">《建党伟业》适合儿童观看吗？</div>
+                    <div class="faq-answer">
+                        影片时长较长（146分钟），且包含部分战争场面和历史悲剧情节，建议家长根据孩子的年龄和接受能力进行引导观看。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">这部电影是真实的历史吗？</div>
+                    <div class="faq-answer">
+                        电影基于真实历史事件改编，但为了艺术表现力，对部分人物对话和情节进行了戏剧化的处理和改编。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">电影中饰演毛泽东的演员是谁？</div>
+                    <div class="faq-answer">
+                        在本片中，刘烨饰演青年时期的毛泽东。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">哪里可以观看这部电影？</div>
+                    <div class="faq-answer">
+                        该影片已上线各大主流视频平台，您可以在爱奇艺、腾讯视频等平台搜索片名进行观看。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>影史回眸</h3>
+                <p>致力于传播中国电影文化，回顾经典历史瞬间，弘扬正能量。</p>
+            </div>
+            <div class="footer-col">
+                <h3>栏目导航</h3>
+                <ul>
+                    <li><a href="#">最新资讯</a></li>
+                    <li><a href="#">经典榜单</a></li>
+                    <li><a href="#">影评专栏</a></li>
+                    <li><a href="#">电影下载</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="#">网站简介</a></li>
+                    <li><a href="#">联系合作</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <p>微信公众号：影史回眸</p>
+                <p>邮箱：contact@filmarchive.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 影史回眸. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+              </html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西瓜影音播放器官方下载页面。提供高清流畅的本地视频播放解决方案，支持多种格式解码，兼容性极佳，是您手机和电脑上必备的影音播放工具。">
+    <meta name="keywords" content="西瓜影音播放器,视频播放器,本地播放,高清播放,视频解码,西瓜影音">
+    <title>西瓜影音播放器-高清本地视频播放与解码工具</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b00; /* 西瓜红 */
+            --primary-hover: #e65100;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --border-radius: 8px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-download-nav {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .btn-download-nav:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: #2d2d2d;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .download-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 6px 16px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid #e0e0e0;
+            color: var(--text-main);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* 特性网格 */
+        .features {
+            padding: 40px 0;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 24px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* 核心功能区 */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        /* 格式兼容性 */
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .compat-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0f0f0;
+        }
+
+        .compat-item strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .compat-item span {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* 使用场景 */
+        .usage-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: white;
+            padding: 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-num {
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 12px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+            display: none;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none; /* 简化处理，移动端隐藏导航链接 */
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .step-num {
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 16.5V7.5L16 12L10 16.5Z" fill="#ff6b00"/>
+                </svg>
+                <span>西瓜影音</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#features">功能特色</a>
+                <a href="#compatibility">格式支持</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#download" class="btn btn-download-nav">立即下载</a>
+        </div>
+    </header>
+
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>极致体验 <span class="highlight">西瓜影音播放器</span></h1>
+            <p>专为本地高清视频设计，支持几乎所有视频格式。无需联网，无需会员，即刻畅享您的私人电影库。</p>
+            
+            <div class="download-actions" id="download">
+                <a href="#" class="btn btn-primary">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    下载 PC 版
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    下载手机版
+                </a>
+            </div>
+
+            <!-- 模拟界面截图占位 -->
+            <div style="background: #fff; padding: 10px; border-radius: 12px; box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto; border: 1px solid #eee; overflow: hidden;">
+                <div style="height: 300px; background: #2c2c2c; display: flex; align-items: center; justify-content: center; color: #666; position: relative;">
+                    <div style="position: absolute; top: 10px; left: 10px; right: 10px; height: 4px; background: #333; border-radius: 2px;"></div>
+                    <div style="position: absolute; bottom: 10px; left: 10px; right: 10px; height: 20px; background: #333; border-radius: 4px;"></div>
+                    <div style="z-index: 2; text-align: center;">
+                        <div style="font-size: 48px; color: #ff6b00; margin-bottom: 10px;">▶</div>
+                        <div style="color: #888;">播放器界面预览</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-icon">📺</span>
+                    <h3>万能解码</h3>
+                    <p>内置强大解码引擎，完美支持 MKV, MP4, AVI, MOV, FLV 等主流及小众格式，无需安装额外解码包。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">💾</span>
+                    <h3>本地播放</h3>
+                    <p>保护隐私，离线观看。将电影、电视剧、纪录片直接存入设备，随时随地想看就看。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>流畅体验</h3>
+                    <p>针对高清视频进行硬件加速优化，播放过程无卡顿，音画同步精准，支持倍速播放。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">🎧</span>
+                    <h3>音效增强</h3>
+                    <p>内置多种均衡器预设与音效调节，一键提升听觉享受，支持外接设备连接。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 格式支持 -->
+    <section class="section" id="compatibility">
+        <div class="container">
+            <div class="section-header">
+                <h2>广泛兼容性</h2>
+                <p>无论是网络下载的文件还是从相机导出的素材，都能轻松播放</p>
+            </div>
+            <div class="compatibility-grid">
+                <div class="compat-item"><strong>MP4</strong><span>MPEG-4 基础格式</span></div>
+                <div class="compat-item"><strong>AVI</strong><span>经典视频容器</span></div>
+                <div class="compat-item"><strong>MOV</strong><span>QuickTime 格式</span></div>
+                <div class="compat-item"><strong>WMV</strong><span>Windows 媒体</span></div>
+                <div class="compat-item"><strong>FLV</strong><span>Flash 流媒体</span></div>
+                <div class="compat-item"><strong>MKV</strong><span>高兼容封装</span></div>
+                <div class="compat-item"><strong>RMVB</strong><span>经典网络格式</span></div>
+                <div class="compat-item"><strong>3GP</strong><span>移动设备格式</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用指南 -->
+    <section class="section" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>快速开始</h2>
+                <p>三步即可拥有专属播放器</p>
+            </div>
+            <div class="usage-steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>选择版本</h3>
+                        <p>根据您的设备系统（Windows 或 Android/iOS），点击上方按钮下载对应的安装包。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>安装运行</h3>
+                        <p>双击下载的安装程序，按照提示完成安装。软件安装包体积小巧，运行速度快。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>打开播放</h3>
+                        <p>双击任意视频文件，即可通过西瓜影音播放器流畅播放。支持右键菜单快速操作。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">西瓜影音播放器免费吗？</div>
+                    <div class="faq-answer">是的，西瓜影音播放器完全免费，无广告弹窗，无功能限制，您可以放心使用。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">为什么有些视频无法播放？</div>
+                    <div class="faq-answer">极少数视频可能使用了特殊的加密或编码技术。建议尝试更新播放器版本，或检查视频文件是否损坏。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">支持手机投屏到电视吗？</div>
+                    <div class="faq-answer">部分版本支持通过DLNA协议将手机画面投射到支持无线投屏的智能电视或投影仪上。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于西瓜影音</h4>
+                    <p style="font-size: 14px; line-height: 1.8;">西瓜影音致力于为用户提供最优质的本地视频播放体验，让您的数字娱乐生活更加丰富多彩。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品支持</h4>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">下载中心</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">技术支持</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 西瓜影音播放器. All rights reserved. 本页面为功能展示与下载引导页面，非官方网站。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
